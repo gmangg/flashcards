@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Card</title>
+    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Card</h1>
+    <p><strong>{{ card.question }}</strong><br>{{ card.answer }}</p>
+    <p><a href="/">← Back</a> | <a href="/play">Play</a></p>
+  </body>
+</html>
