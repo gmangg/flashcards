@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %} - Flashcard App</title>
+    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">
+    {% block head %}{% endblock %}
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/cards">Cards</a> |
+      <a href="/sets">Sets</a> |
+      <a href="/play">Play</a>
+    </nav>
+  </header>
+
+  <main id="content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>© 2025 Golden Mang — Flashcard App #3</p>
+  </footer>
+</body>
+</html>

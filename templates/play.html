@@ -1,22 +1,20 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Random Card</title>
-  </head>
-  <body>
-    <h1>Random Card</h1>
+{% extends "base.html" %}
+{% block title %}Random Card{% endblock %}
 
-    <p>
-      <strong>{{ card.question }}</strong><br>
-      {{ card.answer }}
-    </p>
-    <hr>
+{% block head %}
+    {{ super() }}
+{% endblock %}
 
-    <p>
-      <a href="/">← Back to all</a> | 
-      <a href="/play">Another random</a>
-    </p>
-  </body>
-</html>
+{% block content %}
+  <h1>Random Card</h1>
+
+  {% import "macros/card.html" as card_macro %}
+  {{ card_macro.card(card) }}
+  <hr>
+
+  <p>
+    <a href="/">← Back to all</a> |
+    <a href="/play">Another random</a>
+  </p>
+{% endblock %}
 

@@ -1,16 +1,20 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Sets</title>
-    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">
-  </head>
-  <body>
-    <h1>Sets</h1>
+{% extends "base.html" %}
+{% block title %}All Sets{% endblock %}
+
+{% block content %}
+  <h1>All Sets</h1>
+
+  {% if sets %}
     <ul>
-      {% for s in sets %}
-        <li>{{ s.name }}</li>
+      {% for set in sets %}
+        <li>
+          <a href="{{ url_for('view_set', set_id=set.id) }}">
+            {{ set.name }}
+          </a>
+        </li>
       {% endfor %}
     </ul>
-  </body>
-</html>
+  {% else %}
+    <p>No sets found. Try adding some via <a href="/docs">FastAPI Docs</a>.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ set.name }}{% endblock %}
+
+{% block content %}
+  <h1>Set: {{ set.name }}</h1>
+
+  {% if cards %}
+    <ul>
+      {% for card in cards %}
+        <li>
+          <strong>{{ card.question }}</strong><br>
+          {{ card.answer }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No cards in this set yet.</p>
+  {% endif %}
+
+  <p><a href="{{ url_for('list_sets') }}">← Back to all sets</a></p>
+{% endblock %}
