@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>All Trivia Cards</title>
+    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <h1>All Trivia Cards</h1>
+
+    {% for card in cards %}
+      <div>
+        <!-- link to single card -->
+        <a href="{{ url_for('get_card', card_id=card.id) }}">
+          <strong>{{ card.question }}</strong>
+        </a><br>
+        {{ card.answer }}
+      </div>
+      <hr>
+    {% endfor %}
+
+    <p><a href="/play">Play a random card →</a></p>
+  </body>
+</html>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>All Trivia Cards</title>
+  </head>
+  <body>
+    <h1>All Trivia Cards</h1>
+
+    {% for card in cards %}
+      <p>
+        <strong>{{ card.question }}</strong><br>
+        {{ card.answer }}
+      </p>
+      <hr>
+    {% endfor %}
+
+    <p><a href="/play">Play a random card →</a></p>
+  </body>
+</html>
+

@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Depends, Request, Form
+# flashcards/routers/cards.py
+from fastapi import APIRouter, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlmodel import select
-from ..db.session import get_session, SessionDep
+from ..db.session import SessionDep
 from ..db.models import Card, Set
 from ..core.templates import templates
 
@@ -31,10 +32,10 @@ def add_card_form(request: Request, session: SessionDep):
 # ---- Add card (POST) ----
 @router.post("/add")
 def create_card(
-    session: SessionDep,
     front: str = Form(...),
     back: str = Form(...),
     set_id: int = Form(...),
+    session: SessionDep = None,
 ):
     db_card = Card(front=front, back=back, set_id=set_id)
     session.add(db_card)

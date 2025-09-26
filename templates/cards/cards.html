@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>All Cards</h1>
+  <ul>
+    {% for card in cards %}
+      <li>
+        <a href="/cards/{{ card.id }}">
+          {{ card.front if card.front else card.question }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="/cards/add">Add a new card</a>
+{% endblock %}

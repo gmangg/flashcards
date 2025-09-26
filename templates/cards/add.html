@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Add a New Card</h1>
+  <form action="/cards/add" method="post">
+    <label for="front">Front:</label><br>
+    <input type="text" id="front" name="front" required><br><br>
+
+    <label for="back">Back:</label><br>
+    <input type="text" id="back" name="back" required><br><br>
+
+    <label for="set_id">Set:</label><br>
+    <select name="set_id" id="set_id">
+      {% for set in sets %}
+        <option value="{{ set.id }}">{{ set.name }}</option>
+      {% endfor %}
+    </select><br><br>
+
+    <input type="submit" value="Add Card">
+  </form>
+  <a href="/cards/">Cancel</a>
+{% endblock %}

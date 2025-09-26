@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>All Sets</h1>
+  <ul>
+    {% for set in sets %}
+      <li>
+        <a href="/sets/{{ set.id }}">{{ set.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2>Add a New Set</h2>
+  <form action="/sets/add" method="post">
+    <input type="text" name="name" placeholder="Set name" required>
+    <input type="submit" value="Add Set">
+  </form>
+{% endblock %}
+

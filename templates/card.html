@@ -1,17 +1,6 @@
-{% extends "base.html" %}
-{% block title %}View Flash Cards{% endblock %}
-
-{% block head %}
-    {{ super() }}
-{% endblock %}
-
-{% block content %}
-  <h1>Flash Cards</h1>
-
-  {% import "macros/card.html" as card_macro %}
-
-  {% for card in cards %}
-    {{ card_macro.card(card) }}
-    <hr>
-  {% endfor %}
-{% endblock %}
+{% macro card(card) %}
+  <div class="card">
+    <div class="front">{{ card.front }}</div>
+    <div class="back">{{ card.back }}</div>
+  </div>
+{% endmacro %}

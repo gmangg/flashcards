@@ -1,20 +1,16 @@
 {% extends "base.html" %}
-{% block title %}Random Card{% endblock %}
+{% import "card.html" as card_macro %}
 
-{% block head %}
-    {{ super() }}
-{% endblock %}
+{% block title %}Play{% endblock %}
 
 {% block content %}
-  <h1>Random Card</h1>
+  <h1>Flashcard Play</h1>
 
-  {% import "macros/card.html" as card_macro %}
-  {{ card_macro.card(card) }}
-  <hr>
-
-  <p>
-    <a href="/">← Back to all</a> |
-    <a href="/play">Another random</a>
-  </p>
+  {% if card %}
+    <div class="flashcard">
+      {{ card_macro.card(card) }}
+    </div>
+  {% else %}
+    <p>No cards available. Please add some first.</p>
+  {% endif %}
 {% endblock %}
-
