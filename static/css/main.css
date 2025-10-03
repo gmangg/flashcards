@@ -1,0 +1,109 @@
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+:root {
+  --bg: #0b0f14;
+  --text: #e8eef4;
+  --surface: #111826;
+  --muted: #97a3b6;
+  --brand: #6aa6ff;
+}
+body {
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", Arial;
+  background: var(--bg);
+  color: var(--text);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.container { width: min(1100px, 92vw); margin-inline: auto; padding: 0 1rem; }
+.site-main { padding: 2rem 0 3rem; }
+.content-centered { max-width: 820px; margin-inline: auto; }
+
+/* ---------- Header ---------- */
+.site-header { background: var(--surface); border-bottom: 1px solid #1f2937; }
+.site-header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 64px; gap: 1rem;
+}
+.brand { font-weight: 700; text-decoration: none; color: var(--text); letter-spacing: .2px; }
+.menu { display: flex; gap: .75rem; flex-wrap: wrap; }
+.menu a {
+  padding: .5rem .75rem;
+  border-radius: .5rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.menu a:hover {
+  background: #1b2433;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Mobile menu collapse */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: var(--surface);
+    position: absolute;
+    top: 64px;
+    right: 1rem;
+    padding: 1rem;
+    border-radius: .75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  .menu.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+/* ---------- Play With Friends Page ---------- */
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.game-intro {
+  margin-bottom: 2rem;
+}
+
+.game-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  padding: .75rem 1.25rem;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #4f8de0;
+}
+
+.site-footer { background: var(--surface); border-top: 1px solid #1f2937; padding: 1rem 0; color: var(--muted); }
+.site-footer a { color: var(--brand); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
