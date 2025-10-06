@@ -1,18 +1,23 @@
 {% extends "base.html" %}
+{% block title %}Sets{% endblock %}
 {% block content %}
-  <h1>All Sets</h1>
+
+<h1>All Sets</h1>
+
+<a href="/sets/add">➕ Add New Set</a>
+<br><br>
+
+{% if sets %}
   <ul>
     {% for set in sets %}
       <li>
-        <a href="/sets/{{ set.id }}">{{ set.name }}</a>
+        <strong>{{ set.name }}</strong>
+        (<a href="/sets/{{set.id}}/edit">Edit</a>)
       </li>
     {% endfor %}
   </ul>
+{% else %}
+  <p>No sets found. Try adding one!</p>
+{% endif %}
 
-  <h2>Add a New Set</h2>
-  <form action="/sets/add" method="post">
-    <input type="text" name="name" placeholder="Set name" required>
-    <input type="submit" value="Add Set">
-  </form>
 {% endblock %}
-

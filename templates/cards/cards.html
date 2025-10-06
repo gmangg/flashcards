@@ -1,14 +1,22 @@
 {% extends "base.html" %}
+{% block title %}Cards{% endblock %}
+
 {% block content %}
-  <h1>All Cards</h1>
+<h1>All Cards</h1>
+
+<a href="/cards/add">➕ Add New Card</a>
+<br><br>
+
+{% if cards %}
   <ul>
     {% for card in cards %}
       <li>
-        <a href="/cards/{{ card.id }}">
-          {{ card.front if card.front else card.question }}
-        </a>
+        <strong>{{ card.front }}</strong> — {{ card.back }}
+        (<a href="/cards/{{card.id}}/edit">Edit</a>)
       </li>
     {% endfor %}
   </ul>
-  <a href="/cards/add">Add a new card</a>
+{% else %}
+  <p>No cards found. Try adding one!</p>
+{% endif %}
 {% endblock %}

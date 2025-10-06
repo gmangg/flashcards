@@ -1,27 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>{% block title %}{% endblock %} - Flashcard App</title>
-    <link href="{{ url_for('static', path='css/styles.css') }}" rel="stylesheet">
-    {% block head %}{% endblock %}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Flashcards{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="/">Home</a> |
-      <a href="/cards">Cards</a> |
-      <a href="/sets">Sets</a> |
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/">Flashcards</a>
+    <button class="menu-toggle" onclick="document.querySelector('.menu').classList.toggle('show')">☰</button>
+    <nav class="menu">
+      <a href="/">Home</a>
+      <a href="/sets">Sets</a>
       <a href="/play">Play</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main id="content">
-    {% block content %}{% endblock %}
+  <main class="site-main">
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 Golden Mang — Flashcard App #3</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 • <a href="https://github.com/gmangg" target="_blank" rel="noopener">GitHub</a> • <a href="mailto:you@example.com">Contact</a></p>
+    </div>
   </footer>
+
 </body>
 </html>

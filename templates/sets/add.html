@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{% if set %}Edit Set{% else %}Add Set{% endif %}{% endblock %}
+{% block content %}
+
+<h2>{% if set %}Edit Set{% else %}Add a New Set{% endif %}</h2>
+
+<form action="{% if set %}/sets/{{set.id}}/edit{% else %}/sets/add{% endif %}" method="post">
+  <label>Set Name:</label><br>
+  <input type="text" name="name" value="{{ set.name if set else '' }}" required><br><br>
+  <input type="submit" value="Save">
+</form>
+
+{% if set %}
+  <a href="/sets/">Cancel</a>
+  <form action="/sets/{{set.id}}/delete" method="post">
+    <button type="submit" onclick="return confirm('Are you sure you want to delete this set?');">
+      Delete Set
+    </button>
+  </form>
+{% endif %}
+
+{% endblock %}
